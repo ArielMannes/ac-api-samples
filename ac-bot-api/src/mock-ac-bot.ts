@@ -56,7 +56,7 @@ const app = express();
 app.use(express.json());
 const server = http.createServer(app);
 
-function verifyClientFunc(info: { origin: string; secure: boolean; req: express.Request }) {
+export function verifyClientFunc(info: { origin: string; secure: boolean; req: express.Request }) {
   return parseBearerToken(info.req) === accessToken;
 }
 const ews = expressWs(app, server, { wsOptions: { verifyClient: verifyClientFunc } });
